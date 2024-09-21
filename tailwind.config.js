@@ -2,12 +2,19 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,vue}'],
   theme: {
+    fontFamily: {
+      'sans': ['"Noto Sans"', 'system-ui',],
+      'serif': ['ui-serif', 'Georgia',],
+      'mono': ['ui-monospace', 'SFMono-Regular',],
+      'display': ['Oswald',],
+      'body': ['"Open Sans"',],
+    },
     extend: {
       colors: {
-        primary: 'var(--georchestra-header-primary)',
-        secondary: 'var(--georchestra-header-secondary)',
-        'primary-light': 'var(--georchestra-header-primary-light)',
-        'secondary-light': 'var(--georchestra-header-secondary-light)',
+        primary: 'var(--geovision-header-primary)',
+        secondary: 'var(--geovision-header-secondary)',
+        'primary-light': 'var(--geovision-header-primary-light)',
+        'secondary-light': 'var(--geovision-header-secondary-light)',
       },
     },
   },

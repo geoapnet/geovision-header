@@ -21,6 +21,7 @@ interface WhoAmIResponse {
     username: string
     firstName: string
     lastName: string
+    organization: string
     ldapWarn: boolean
     ldapRemainingDays: string
   }
@@ -30,6 +31,7 @@ export interface User {
   username: string
   firstname?: string
   lastname?: string
+  organization?: string
   anonymous: boolean
   warned: boolean
   remainingDays: string
@@ -65,6 +67,7 @@ export async function getUserDetails(): Promise<User> {
         username: user.username,
         firstname: user.firstName,
         lastname: user.lastName,
+        organization: user.organization,
         warned: user.ldapWarn,
         remainingDays: user.ldapRemainingDays,
         anonymous: roles.indexOf('ROLE_ANONYMOUS') > -1,

@@ -6,7 +6,7 @@
     "start": "npm run dev",
     "dev": "vite",
     "build": "run-p type-check build-only",
-    "build-only": "vite build",
+    "build-only": "vite build --base=/header/",
     "preview": "vite preview",
     "lint:js": "eslint . --ext .vue,.js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
     "lint:prettier": "prettier --check . --ignore-path .gitignore",
