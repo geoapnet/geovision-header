@@ -12,6 +12,7 @@ module.exports = {
   rules: {
     'vue/multi-word-component-names': 'off',
     'no-undef': 'off',
+    'vue/require-v-for-key': 'warn',
   },
   parserOptions: {
     ecmaVersion: 'latest',

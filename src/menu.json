@@ -29,37 +29,38 @@
       "i18n": "datafeeder",
       "url": "/datafeeder",
       "active-app" : "datafeeder",
-      "condition": "import"
+      "condition": "ROLE_SUPERUSER,ROLE_IMPORT"
     },
     {
-      "condition": "isAdmin",
+      "condition": "ROLE_SUPERUSER",
       "type": "separator"
     },
     {
       "type": "dropdown",
       "label": "Administration",
       "i18n": "admin",
+      "condition": "ROLE_SUPERUSER",
       "items": [
         {
           "label": "Geonetwork",
           "i18n": "catalogue",
           "url": "/georchestra/ldap/users",
           "active-app": "geonetwork",
-          "condition": "catalogAdmin"
+          "condition": "ROLE_SUPERUSER,ROLE_GN_EDITOR,ROLE_GN_ADMIN"
         },
         {
           "label": "Viewer",
           "i18n": "viewer",
           "url": "/mapstore/#/admin",
           "active-app": "msadmin",
-          "condition": "viewer"
+          "condition": "ROLE_SUPERUSER,ROLE_MAPSTORE_ADMIN"
         },
         {
           "label": "Console",
           "i18n": "users",
           "url": "/console/manager/home",
           "active-app": "console",
-          "condition": "console"
+          "condition": "ROLE_SUPERUSER"
         }
       ]
     }

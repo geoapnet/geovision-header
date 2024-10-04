@@ -36,6 +36,7 @@ const isAdmin = computed(() => state.user?.adminRoles?.admin)
 const isWarned = computed(() => state.user?.warned)
 const remainingDays = computed(() => state.user?.remainingDays)
 const adminRoles = computed(() => state.user?.adminRoles)
+const cond = computed(condition => state.user?.roles?.[condition])
 
 const loginUrl = computed(() => {
   const current = new URL(window.location.href)
@@ -49,7 +50,9 @@ function toggleMenu(): void {
 }
 
 function checkCondition(condition: string): boolean {
-  return !condition || (condition && state.user?.adminRoles?.[condition])
+  if (!state.user) return false
+  if (!condition) return true
+  return condition.split(',').some(c => state.user?.roles?.indexOf(c) !== -1)
 }
 
 onMounted(() => {
@@ -102,7 +105,7 @@ onMounted(() => {
           ></GeorchestraLogo>
         </a>
         <nav class="flex justify-center items-center font-semibold">
-          <template v-for="item in menu.menu" v-if="checkCondition">
+          <template v-for="(item, index) in menu.menu" :key="index">
             <template v-if="!item.type && checkCondition(item.condition)">
               <a
                 :href="item.url"
@@ -111,12 +114,22 @@ onMounted(() => {
                 >{{ item.i18n ? t(item.i18n) : item.label }}</a
               >
             </template>
-            <template v-else-if="item.type === 'separator' && checkCondition(item.condition)">
+            <template
+              v-else-if="
+                item.type === 'separator' && checkCondition(item.condition)
+              "
+            >
               <span class="text-gray-400">|</span>
             </template>
-            <template v-else-if="item.type === 'dropdown' && checkCondition(item.condition)">
+            <template
+              v-else-if="
+                item.type === 'dropdown' && checkCondition(item.condition)
+              "
+            >
               <div class="group inline-block relative">
-                <button class="nav-item after:hover:scale-x-0 flex items-center">
+                <button
+                  class="nav-item after:hover:scale-x-0 flex items-center"
+                >
                   <span class="mr-2 first-letter:capitalize">{{
                     item.i18n ? t(item.i18n) : item.label
                   }}</span>
@@ -129,8 +142,11 @@ onMounted(() => {
                   class="absolute hidden group-hover:block border rounded w-full admin-dropdown z-[1002] bg-white"
                 >
                   <template v-for="subitem in item.items">
-                    <li v-if="checkCondition(subitem.condition)"
-                      :class="{ active: props.activeApp === subitem['active-app'] }"
+                    <li
+                      v-if="checkCondition(subitem.condition)"
+                      :class="{
+                        active: props.activeApp === subitem['active-app'],
+                      }"
                     >
                       <a :href="subitem.url" class="capitalize">
                         {{ subitem.i18n ? t(subitem.i18n) : subitem.label }}</a
