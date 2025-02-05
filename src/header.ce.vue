@@ -85,7 +85,7 @@ onMounted(() => {
     <component :is="'style'" v-if="!props.stylesheet">
       @media (prefers-color-scheme: light) {
       header {
-      --geovision-header-primary: rgb(79, 70, 229);
+      --geovision-header-primary: rgb(50, 141, 200);
       --geovision-header-secondary: #1b1f3b;
       --geovision-header-primary-light: #1244F01a;
       --geovision-header-secondary-light: #1b1f3b1a;
@@ -93,7 +93,7 @@ onMounted(() => {
       }
       @media (prefers-color-scheme: dark) {
       header {
-      --geovision-header-primary: rgb(99, 102, 241);
+      --geovision-header-primary: rgb(50, 141, 200);
       --geovision-header-secondary: unset;
       --geovision-header-primary-light: #4338ca1a;
       --geovision-header-secondary-light: unset;
@@ -131,16 +131,16 @@ onMounted(() => {
                 {{ t('remaining_days_msg_part3') }}</a></span>
           </nav>
         </div>
-        <div class="flex justify-center items-center items-center">
+        <div class="flex justify-center items-center">
           <a target="_parent" class="btn" :class="{ active: props.activeApp === 'import' }" href="/import/"
             v-if="adminRoles?.import">
             {{ t('datafeeder') }}
           </a>
           <div v-if="!isAnonymous" class="admin group relative inline-block">
-            <button class="nav-item flex items-center gap-4"
+            <button type="button" class="nav-item flex items-center gap-4"
               :title="`${state.user?.firstname} ${state.user?.lastname}`">
               <AccountIcon class="text-basic inline-block"></AccountIcon>
-              <span class="max-w-[120px] truncate text-left">
+              <span class="max-w-[120px] truncate text-left hidden md:block">
                 <div class="font-medium text-sm opacity-100">
                   {{ `${state.user?.firstname} ${state.user?.lastname}` }}
                 </div>
@@ -150,7 +150,7 @@ onMounted(() => {
               </span>
             </button>
             <ul
-              class="absolute hidden group-hover:block border w-full admin-dropdown z-[1002] bg-neutral-20 dark:bg-neutral-800">
+              class="absolute hidden group-hover:block px-1 py-2 border rounded w-full admin-dropdown z-[1002] bg-white dark:bg-neutral-800 backdrop-blur-sm">
               <!--
               <li :class="{ active: props.activeApp === 'geonetwork' }">
                 <a target="_parent" class="catalog" v-if="adminRoles?.catalog || adminRoles?.catalogAdmin" :href="adminRoles?.catalogAdmin
@@ -227,7 +227,7 @@ onMounted(() => {
               <button class="nav-item flex items-center gap-4"
                 :title="`${state.user?.firstname} ${state.user?.lastname}`">
                 <AccountIcon class="font-bold text-2xl inline-block"></AccountIcon>
-                <span class="max-w-[94px] truncate text-left">
+                <span class="max-w-[94px] truncate text-left hidden md:block">
                   <div class="font-medium text-sm opacity-100">
                     {{ `${state.user?.firstname} ${state.user?.lastname}` }}
                   </div>
@@ -237,7 +237,7 @@ onMounted(() => {
                 </span>
               </button>
               <ul
-                class="absolute hidden group-hover:block border w-full admin-dropdown z-[1002] bg-slate-50 dark:bg-gray-700">
+                class="absolute hidden group-hover:block px-1 py-2 border rounded w-full admin-dropdown z-[1002] bg-white dark:bg-neutral-800 backdrop-blur-sm">
                 <!--
               <li :class="{ active: props.activeApp === 'geonetwork' }">
                 <a target="_parent" class="catalog" v-if="adminRoles?.catalog || adminRoles?.catalogAdmin" :href="adminRoles?.catalogAdmin
@@ -340,15 +340,15 @@ onMounted(() => {
   }
 
   .nav-item.active {
-    @apply font-bold border-indigo-600 dark:border-indigo-500 text-indigo-600 hover:text-indigo-600 dark:text-indigo-500 dark:hover:text-indigo-500;
+    @apply font-bold border-primary dark:border-primary text-primary hover:text-primary dark:text-primary dark:hover:text-primary;
   }
 
   .btn {
-    @apply uppercase text-base font-semibold whitespace-nowrap px-4 py-2 mx-2 text-slate-100 bg-primary hover:brightness-90 transition-colors;
+    @apply text-base font-semibold whitespace-nowrap px-4 py-2 mx-2 rounded text-slate-100 bg-primary hover:brightness-90 transition-colors;
   }
 
   .btn-secondary {
-    @apply uppercase text-base font-semibold whitespace-nowrap px-4 py-2 mx-2 text-primary bg-transparent border hover:bg-primary hover:brightness-90 hover:text-slate-100 transition-colors;
+    @apply text-base font-semibold whitespace-nowrap px-4 py-2 mx-2 rounded text-primary bg-transparent border hover:bg-primary hover:brightness-90 hover:text-slate-100 transition-colors;
   }
 
   .link-btn {
@@ -356,7 +356,7 @@ onMounted(() => {
   }
 
   .admin-dropdown>li {
-    @apply block px-2 text-left hover:bg-indigo-700/10 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-slate-100 capitalize;
+    @apply block rounded px-2 text-left hover:bg-primary-light text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-slate-100 capitalize;
   }
 
   .admin-dropdown>li>a {
@@ -364,7 +364,7 @@ onMounted(() => {
   }
 
   .admin-dropdown>li.active {
-    @apply bg-indigo-700/20;
+    @apply bg-primary-light;
   }
 
   .icon-dropdown {
