@@ -120,7 +120,7 @@ onMounted(() => {
               href="/mapstore/#/home" role="tab">
               {{ t('apps') }}
             </a>
-            <a target="_parent" class="nav-item" :class="{ active: props.activeApp === 'geoserver' }"
+            <a target="_parent" class="nav-item" v-if="isAdmin" :class="{ active: props.activeApp === 'geoserver' }"
               href="/geoserver/web/" role="tab">
               {{ t('services') }}
             </a>
@@ -161,13 +161,13 @@ onMounted(() => {
                   <span class="first-letter:capitalize">{{ t('catalogue') }}</span>
                 </a>
               </li>
-                <li :class="{ active: props.activeApp === 'msadmin' }">
-                  <a target="_parent" href="/mapstore/#/admin" v-if="adminRoles?.viewer" class="">
-                    <MapIcon class="icon-dropdown"></MapIcon>
-                    <span class="first-letter:capitalize">{{ t('maps') }}</span>
-                  </a>
-                </li>
               -->
+              <li :class="{ active: props.activeApp === 'msadmin' }">
+                <a target="_parent" href="/mapstore/#/admin" v-if="adminRoles?.viewer" class="">
+                  <MapIcon class="icon-dropdown"></MapIcon>
+                  <span class="first-letter:capitalize">{{ t('contexts') }}</span>
+                </a>
+              </li>
               <li>
                 <a target="_parent" href="/console/account/userdetails" class="profile">
                   <ProfileIcon class="icon-dropdown"></ProfileIcon>
@@ -239,22 +239,22 @@ onMounted(() => {
               <ul
                 class="absolute hidden group-hover:block px-1 py-2 border rounded w-full admin-dropdown z-[1002] bg-white dark:bg-neutral-800 backdrop-blur-sm">
                 <!--
-              <li :class="{ active: props.activeApp === 'geonetwork' }">
-                <a target="_parent" class="catalog" v-if="adminRoles?.catalog || adminRoles?.catalogAdmin" :href="adminRoles?.catalogAdmin
-                  ? `/geonetwork/srv/${state.lang3}/admin.console`
-                  : `/geonetwork/srv/${state.lang3}/catalog.edit#/board`
-                  ">
-                  <SearchIcon class="icon-dropdown"></SearchIcon>
-                  <span class="first-letter:capitalize">{{ t('catalogue') }}</span>
-                </a>
-              </li>
-                <li :class="{ active: props.activeApp === 'msadmin' }">
-                  <a target="_parent" href="/mapstore/#/admin" v-if="adminRoles?.viewer" class="">
-                    <MapIcon class="icon-dropdown"></MapIcon>
-                    <span class="first-letter:capitalize">{{ t('maps') }}</span>
+                <li :class="{ active: props.activeApp === 'geonetwork' }">
+                  <a target="_parent" class="catalog" v-if="adminRoles?.catalog || adminRoles?.catalogAdmin" :href="adminRoles?.catalogAdmin
+                    ? `/geonetwork/srv/${state.lang3}/admin.console`
+                    : `/geonetwork/srv/${state.lang3}/catalog.edit#/board`
+                    ">
+                    <SearchIcon class="icon-dropdown"></SearchIcon>
+                    <span class="first-letter:capitalize">{{ t('catalogue') }}</span>
                   </a>
                 </li>
               -->
+                <li :class="{ active: props.activeApp === 'msadmin' }">
+                  <a target="_parent" href="/mapstore/#/admin" v-if="adminRoles?.viewer" class="">
+                    <MapIcon class="icon-dropdown"></MapIcon>
+                    <span class="first-letter:capitalize">{{ t('contexts') }}</span>
+                  </a>
+                </li>
                 <li>
                   <a target="_parent" href="/console/account/userdetails" class="profile">
                     <ProfileIcon class="icon-dropdown"></ProfileIcon>
@@ -304,7 +304,7 @@ onMounted(() => {
               <ExtensionIcon></ExtensionIcon>
               <span>{{ t('apps') }}</span>
             </a>
-            <a target="_parent" class="nav-item-mobile" :class="{ active: props.activeApp === 'geoserver' }"
+            <a target="_parent" class="nav-item-mobile" v-if="isAdmin" :class="{ active: props.activeApp === 'geoserver' }"
               href="/geoserver/" role="tab">
               <ServiceIcon></ServiceIcon>
               <span>{{ t('services') }}</span>
