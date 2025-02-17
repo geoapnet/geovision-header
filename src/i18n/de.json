@@ -1,17 +1,18 @@
 {
-  "home": "Zurück zur Startseite",
-  "logo": "GeoVision",
+  "home": "Startseite",
+  "logo": "Logo",
   "catalogue": "Katalog",
-  "maps": "maps",
-  "apps": "Anwendungen",
+  "maps": "Kartenanzeige",
+  "apps": "Kartensammlung",
+  "contexts": "Karteneinstellungen",
   "datafeeder": "Importieren",
-  "services": "Services",
+  "services": "Kartendienst",
+  "profile": "Profil",
   "admin": "Verwaltung",
-  "profile": "Profile",
-  "console": "Benutzer",
+  "console": "Konsole",
   "logout": "Abmelden",
   "login": "Anmelden",
   "remaining_days_msg_part1": "Nur noch",
-  "remaining_days_msg_part2": "Tage zum",
-  "remaining_days_msg_part3": "Ändern Sie Ihr Passwort"
+  "remaining_days_msg_part2": "Tage bis",
+  "remaining_days_msg_part3": "Sie Ihr Passwort ändern müssen"
 }
