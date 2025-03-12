@@ -144,7 +144,7 @@ onMounted(() => {
                 <div class="font-medium text-sm opacity-100">
                   {{ `${state.user?.firstname} ${state.user?.lastname}` }}
                 </div>
-                <div class="font-light text-xs opacity-90">
+                <div v-if="state.user?.organization" class="font-light text-xs opacity-90">
                   {{ `${state.user?.organization}` }}
                 </div>
               </span>
@@ -231,7 +231,7 @@ onMounted(() => {
                   <div class="font-medium text-sm opacity-100">
                     {{ `${state.user?.firstname} ${state.user?.lastname}` }}
                   </div>
-                  <div class="font-light text-xs opacity-90">
+                  <div v-if="state.user?.organization" class="font-light text-xs opacity-90">
                     {{ `${state.user?.organization}` }}
                   </div>
                 </span>
